@@ -31,6 +31,10 @@ export const sendVerificationEmail = async (email: string, code: string) => {
 
         if (error) {
             console.error('Error sending email:', error);
+            // Fallback for dev/testing: log the code if email fails
+            console.log('====================================================');
+            console.log(`[FALLBACK] Verification Code for ${email}: ${code}`);
+            console.log('====================================================');
             return;
         }
 
@@ -38,5 +42,9 @@ export const sendVerificationEmail = async (email: string, code: string) => {
 
     } catch (error) {
         console.error('Error sending email:', error);
+        // Fallback for dev/testing: log the code if email fails
+        console.log('====================================================');
+        console.log(`[FALLBACK] Verification Code for ${email}: ${code}`);
+        console.log('====================================================');
     }
 };
