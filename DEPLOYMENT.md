@@ -199,6 +199,32 @@ Follow prompts and add environment variables.
 
 ---
 
+## 🌐 Deployment to Render
+
+### Method 1: GitHub → Render (Recommended)
+
+1. **Push to GitHub**
+   (Same steps as above)
+
+2. **Deploy on Render**
+   - Go to https://render.com
+   - Click "New +" -> "Web Service"
+   - Connect your GitHub account
+   - Select the `FocusFlowAi` repository
+   - Render will automatically detect the `render.yaml` file and configure the service.
+   - Click "Create Web Service"
+
+3. **Add Environment Variables**
+   - Go to the "Environment" tab of your new service.
+   - Add the following variables (copy values from your `.env.local`):
+     - `MONGODB_URI`
+     - `JWT_SECRET`
+     - `GROQ_API_KEY`
+     - `NEXT_PUBLIC_APP_URL` (Set this to your Render URL, e.g., `https://focusflow-ai.onrender.com`)
+   - Click "Save Changes"
+
+---
+
 ## 🔍 Verification Checklist
 
 After installation, verify:
