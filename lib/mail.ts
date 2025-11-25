@@ -40,11 +40,13 @@ export const sendVerificationEmail = async (email: string, code: string) => {
     }
 };
 
-export const sendPasswordResetEmail = async (email: string, resetUrl: string) => {
+export const sendPasswordResetEmail = async (email: string, resetToken: string) => {
     if (!RESEND_API_KEY) {
         console.error('RESEND_API_KEY is not defined');
         throw new Error('Email service not configured');
     }
+
+    const resetUrl = `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/auth/reset-password/${resetToken}`;
 
     try {
         const { data, error } = await resend.emails.send({

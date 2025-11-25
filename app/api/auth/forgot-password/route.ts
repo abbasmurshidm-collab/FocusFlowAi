@@ -26,10 +26,8 @@ export async function POST(req: Request) {
         await user.save();
 
         // Send email via Resend
-        const resetUrl = `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/auth/reset-password?token=${resetToken}`;
-
         try {
-            await sendPasswordResetEmail(user.email, resetUrl);
+            await sendPasswordResetEmail(user.email, resetToken);
         } catch (emailError) {
             console.error('Failed to send reset email:', emailError);
             // Rollback token if email fails
