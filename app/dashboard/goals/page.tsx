@@ -151,19 +151,19 @@ export default function GoalsPage() {
     return (
         <div className="space-y-8">
             {/* Header */}
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-4xl font-bold font-heading mb-2">
+                    <h1 className="text-3xl md:text-4xl font-bold font-heading mb-2">
                         <span className="gradient-text">Goals</span>
                     </h1>
-                    <p className="text-gray-400">Track your progress and achieve your dreams</p>
+                    <p className="text-gray-400 text-sm md:text-base">Track your progress and achieve your dreams</p>
                 </div>
 
                 <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setShowCreateModal(true)}
-                    className="btn-primary flex items-center gap-2"
+                    className="btn-primary w-full md:w-auto flex items-center justify-center gap-2 py-3"
                 >
                     <PlusIcon className="w-5 h-5" />
                     New Goal
@@ -171,17 +171,17 @@ export default function GoalsPage() {
             </div>
 
             {/* Goals List */}
-            <div className="space-y-6">
+            <div className="space-y-4 md:space-y-6">
                 <AnimatePresence mode="popLayout">
                     {goals.length === 0 ? (
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            className="glass-card p-12 text-center"
+                            className="glass-card p-8 md:p-12 text-center"
                         >
-                            <FireIcon className="w-16 h-16 text-gray-500 mx-auto mb-4" />
-                            <h3 className="text-xl font-semibold mb-2">No goals yet</h3>
-                            <p className="text-gray-400 mb-6">Set your first goal and start achieving!</p>
+                            <FireIcon className="w-12 h-12 md:w-16 md:h-16 text-gray-500 mx-auto mb-4" />
+                            <h3 className="text-lg md:text-xl font-semibold mb-2">No goals yet</h3>
+                            <p className="text-gray-400 mb-6 text-sm md:text-base">Set your first goal and start achieving!</p>
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
@@ -228,19 +228,19 @@ export default function GoalsPage() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: -20 }}
-                                    className="glass-card p-8"
+                                    className="glass-card p-5 md:p-8"
                                 >
-                                    <div className="flex items-start justify-between mb-6">
-                                        <div className="flex-1">
+                                    <div className="flex flex-col md:flex-row items-start justify-between mb-6 gap-4">
+                                        <div className="flex-1 w-full">
                                             <div className="flex items-center gap-3 mb-2">
-                                                <FireIcon className="w-8 h-8 text-orange-400" />
-                                                <h3 className="text-2xl font-bold">{goal.title}</h3>
+                                                <FireIcon className="w-6 h-6 md:w-8 md:h-8 text-orange-400 flex-shrink-0" />
+                                                <h3 className="text-xl md:text-2xl font-bold break-words">{goal.title}</h3>
                                             </div>
                                             {goal.description && (
-                                                <p className="text-gray-400 mb-4">{goal.description}</p>
+                                                <p className="text-gray-400 mb-4 text-sm md:text-base">{goal.description}</p>
                                             )}
 
-                                            <div className="flex flex-wrap gap-4 text-sm">
+                                            <div className="flex flex-wrap gap-3 md:gap-4 text-xs md:text-sm">
                                                 <div className="flex items-center gap-2">
                                                     <CalendarIcon className="w-4 h-4 text-blue-400" />
                                                     <span className="text-gray-400">
@@ -266,7 +266,7 @@ export default function GoalsPage() {
                                             </div>
                                         </div>
 
-                                        <div className="flex gap-2">
+                                        <div className="flex gap-2 w-full md:w-auto justify-end border-t md:border-t-0 border-white/5 pt-3 md:pt-0">
                                             <button
                                                 onClick={() => handleEditGoal(goal)}
                                                 className="p-2 hover:bg-blue-500/10 rounded-lg transition-colors"
@@ -302,7 +302,7 @@ export default function GoalsPage() {
                                     {/* Milestones */}
                                     {goal.milestones.length > 0 && (
                                         <div>
-                                            <h4 className="font-semibold mb-3 flex items-center gap-2">
+                                            <h4 className="font-semibold mb-3 flex items-center gap-2 text-sm md:text-base">
                                                 <CheckCircleIcon className="w-5 h-5 text-accent" />
                                                 Milestones ({completedMilestones}/{totalMilestones})
                                             </h4>
@@ -311,14 +311,14 @@ export default function GoalsPage() {
                                                     <div
                                                         key={index}
                                                         onClick={() => handleToggleMilestone(index)}
-                                                        className="flex items-center gap-3 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors"
+                                                        className="flex items-start gap-3 p-3 rounded-lg bg-white/5 cursor-pointer hover:bg-white/10 transition-colors"
                                                     >
                                                         {milestone.completed ? (
-                                                            <CheckCircleSolid className="w-5 h-5 text-green-400 flex-shrink-0" />
+                                                            <CheckCircleSolid className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
                                                         ) : (
-                                                            <CheckCircleIcon className="w-5 h-5 text-gray-400 flex-shrink-0" />
+                                                            <CheckCircleIcon className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" />
                                                         )}
-                                                        <span className={milestone.completed ? 'line-through text-gray-500' : ''}>
+                                                        <span className={`text-sm md:text-base ${milestone.completed ? 'line-through text-gray-500' : ''}`}>
                                                             {milestone.title}
                                                         </span>
                                                     </div>
@@ -352,13 +352,13 @@ export default function GoalsPage() {
                             className="fixed inset-0 z-50 flex items-center justify-center p-4"
                             onClick={(e) => e.stopPropagation()}
                         >
-                            <div className="glass-card p-8 w-full max-w-lg max-h-[90vh] overflow-y-auto">
-                                <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                                    <FireIcon className="w-7 h-7 text-orange-400" />
+                            <div className="glass-card p-6 md:p-8 w-full max-w-lg max-h-[90vh] overflow-y-auto">
+                                <h2 className="text-xl md:text-2xl font-bold mb-6 flex items-center gap-2">
+                                    <FireIcon className="w-6 h-6 md:w-7 md:h-7 text-orange-400" />
                                     Create New Goal
                                 </h2>
 
-                                <form onSubmit={handleSaveGoal} className="space-y-6">
+                                <form onSubmit={handleSaveGoal} className="space-y-5 md:space-y-6">
                                     <div>
                                         <label className="block text-sm font-medium mb-2">
                                             Goal Title *
@@ -435,7 +435,7 @@ export default function GoalsPage() {
                                             whileHover={{ scale: 1.02 }}
                                             whileTap={{ scale: 0.98 }}
                                             type="submit"
-                                            className="flex-1 btn-primary py-4"
+                                            className="flex-1 btn-primary py-3 md:py-4"
                                         >
                                             Create Goal
                                         </motion.button>
@@ -445,7 +445,7 @@ export default function GoalsPage() {
                                             whileTap={{ scale: 0.98 }}
                                             type="button"
                                             onClick={() => setShowCreateModal(false)}
-                                            className="flex-1 btn-secondary py-4"
+                                            className="flex-1 btn-secondary py-3 md:py-4"
                                         >
                                             Cancel
                                         </motion.button>
