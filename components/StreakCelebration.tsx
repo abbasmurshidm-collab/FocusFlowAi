@@ -53,33 +53,6 @@ export default function StreakCelebration({ show, streakCount, onClose }: Streak
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50"
-                        onClick={onClose}
-                    />
-
-                    {/* Confetti */}
-                    <div className="fixed inset-0 z-50 pointer-events-none overflow-hidden">
-                        {confetti.map((particle) => (
-                            <motion.div
-                                key={particle.id}
-                                initial={{ y: '-10%', x: `${particle.x}%`, opacity: 1, rotate: 0 }}
-                                animate={{
-                                    y: '110%',
-                                    rotate: 360,
-                                    opacity: [1, 1, 0.5, 0],
-                                }}
-                                transition={{
-                                    duration: 3,
-                                    delay: particle.delay,
-                                    ease: 'linear',
-                                }}
-                                className="absolute w-3 h-3 rounded-sm"
-                                style={{ backgroundColor: particle.color }}
-                            />
-                        ))}
-                    </div>
-
-                    {/* Celebration Modal */}
-                    <motion.div
                         initial={{ scale: 0.5, opacity: 0, y: 50 }}
                         animate={{ scale: 1, opacity: 1, y: 0 }}
                         exit={{ scale: 0.5, opacity: 0, y: 50 }}
