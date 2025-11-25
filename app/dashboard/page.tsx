@@ -136,14 +136,14 @@ export default function DashboardPage() {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
             >
-                <h1 className="text-4xl font-bold font-heading mb-2">
+                <h1 className="text-3xl md:text-4xl font-bold font-heading mb-2">
                     Welcome back, <span className="gradient-text">{user?.name}!</span>
                 </h1>
-                <p className="text-gray-400">Here's your productivity overview</p>
+                <p className="text-gray-400 text-sm md:text-base">Here's your productivity overview</p>
             </motion.div>
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                 {statCards.map((stat, index) => {
                     const Icon = stat.icon;
                     return (
@@ -153,14 +153,14 @@ export default function DashboardPage() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.1 }}
                             whileHover={{ scale: 1.05 }}
-                            className="glass-card p-6 card-hover"
+                            className="glass-card p-5 md:p-6 card-hover"
                         >
                             <div className="flex items-start justify-between mb-4">
-                                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center`}>
-                                    <Icon className="w-6 h-6 text-white" />
+                                <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center`}>
+                                    <Icon className="w-5 h-5 md:w-6 md:h-6 text-white" />
                                 </div>
                             </div>
-                            <h3 className="text-3xl font-bold mb-1">{stat.value}</h3>
+                            <h3 className="text-2xl md:text-3xl font-bold mb-1">{stat.value}</h3>
                             <p className="text-gray-400 text-sm">{stat.title}</p>
                             {stat.subtitle && <p className="text-xs text-accent mt-1">{stat.subtitle}</p>}
                         </motion.div>
@@ -173,19 +173,19 @@ export default function DashboardPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="glass-card p-6"
+                className="glass-card p-5 md:p-6"
             >
-                <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                    <LightBulbIcon className="w-7 h-7 text-accent" />
+                <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 flex items-center gap-2">
+                    <LightBulbIcon className="w-6 h-6 md:w-7 md:h-7 text-accent" />
                     Quick Actions
                 </h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
                     <motion.button
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         onClick={() => window.location.href = '/dashboard/tasks'}
-                        className="btn-primary py-4"
+                        className="btn-primary py-3 md:py-4 text-sm md:text-base"
                     >
                         Create New Task
                     </motion.button>
@@ -194,7 +194,7 @@ export default function DashboardPage() {
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         onClick={() => window.location.href = '/dashboard/focus'}
-                        className="btn-secondary py-4"
+                        className="btn-secondary py-3 md:py-4 text-sm md:text-base"
                     >
                         Start Focus Session
                     </motion.button>
@@ -203,7 +203,7 @@ export default function DashboardPage() {
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         onClick={() => window.location.href = '/dashboard/notes'}
-                        className="btn-secondary py-4"
+                        className="btn-secondary py-3 md:py-4 text-sm md:text-base"
                     >
                         Write Note
                     </motion.button>
@@ -216,10 +216,10 @@ export default function DashboardPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
-                    className="glass-card p-6"
+                    className="glass-card p-5 md:p-6"
                 >
-                    <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                        <ChartBarIcon className="w-7 h-7 text-primary" />
+                    <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 flex items-center gap-2">
+                        <ChartBarIcon className="w-6 h-6 md:w-7 md:h-7 text-primary" />
                         Recent Tasks
                     </h2>
 
@@ -227,18 +227,18 @@ export default function DashboardPage() {
                         {recentTasks.map((task) => (
                             <div
                                 key={task._id}
-                                className="flex items-center justify-between p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all"
+                                className="flex items-center justify-between p-3 md:p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all"
                             >
-                                <div className="flex items-center gap-3">
+                                <div className="flex items-center gap-3 overflow-hidden">
                                     <CheckCircleIcon
-                                        className={`w-5 h-5 ${task.status === 'completed' ? 'text-green-400' : 'text-gray-400'
+                                        className={`w-5 h-5 flex-shrink-0 ${task.status === 'completed' ? 'text-green-400' : 'text-gray-400'
                                             }`}
                                     />
-                                    <span className={task.status === 'completed' ? 'line-through text-gray-500' : ''}>
+                                    <span className={`truncate text-sm md:text-base ${task.status === 'completed' ? 'line-through text-gray-500' : ''}`}>
                                         {task.title}
                                     </span>
                                 </div>
-                                <span className={`text-xs px-3 py-1 rounded-full ${task.priority === 'high' ? 'bg-red-400/10 text-red-400' :
+                                <span className={`text-xs px-2 py-1 md:px-3 md:py-1 rounded-full flex-shrink-0 ml-2 ${task.priority === 'high' ? 'bg-red-400/10 text-red-400' :
                                     task.priority === 'medium' ? 'bg-yellow-400/10 text-yellow-400' :
                                         'bg-blue-400/10 text-blue-400'
                                     }`}>
@@ -255,13 +255,13 @@ export default function DashboardPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
-                className="glass-card p-8 text-center gradient-border"
+                className="glass-card p-6 md:p-8 text-center gradient-border"
             >
-                <SparklesIcon className="w-12 h-12 text-accent mx-auto mb-4" />
-                <p className="text-2xl font-semibold mb-2 gradient-text">
+                <SparklesIcon className="w-10 h-10 md:w-12 md:h-12 text-accent mx-auto mb-4" />
+                <p className="text-xl md:text-2xl font-semibold mb-2 gradient-text">
                     "The secret of getting ahead is getting started."
                 </p>
-                <p className="text-gray-400">- Mark Twain</p>
+                <p className="text-gray-400 text-sm md:text-base">- Mark Twain</p>
             </motion.div>
         </div>
     );

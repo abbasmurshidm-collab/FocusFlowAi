@@ -220,15 +220,15 @@ export default function TasksPage() {
     return (
         <div className="space-y-8">
             {/* Header */}
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-4xl font-bold font-heading mb-2">
+                    <h1 className="text-3xl md:text-4xl font-bold font-heading mb-2">
                         <span className="gradient-text">Tasks</span>
                     </h1>
-                    <p className="text-gray-400">Manage your tasks and boost productivity</p>
+                    <p className="text-gray-400 text-sm md:text-base">Manage your tasks and boost productivity</p>
                 </div>
 
-                <div className="flex gap-3">
+                <div className="flex gap-3 w-full md:w-auto">
                     <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
@@ -238,10 +238,10 @@ export default function TasksPage() {
                             setAiSuggestion('');
                             setShowAIModal(true);
                         }}
-                        className="btn-secondary flex items-center gap-2"
+                        className="btn-secondary flex-1 md:flex-none flex items-center justify-center gap-2 py-3"
                     >
                         <SparklesIcon className="w-5 h-5 text-accent" />
-                        AI Assistant
+                        <span className="md:inline">AI Assistant</span>
                     </motion.button>
 
                     <motion.button
@@ -252,16 +252,16 @@ export default function TasksPage() {
                             setEditingTaskId(null);
                             setShowCreateModal(true);
                         }}
-                        className="btn-primary flex items-center gap-2"
+                        className="btn-primary flex-1 md:flex-none flex items-center justify-center gap-2 py-3"
                     >
                         <PlusIcon className="w-5 h-5" />
-                        New Task
+                        <span className="md:inline">New Task</span>
                     </motion.button>
                 </div>
             </div>
 
             {/* Filters and Search */}
-            <div className="glass-card p-6 space-y-4">
+            <div className="glass-card p-4 md:p-6 space-y-4">
                 {/* Search */}
                 <div className="relative">
                     <MagnifyingGlassIcon className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
@@ -270,19 +270,19 @@ export default function TasksPage() {
                         placeholder="Search tasks..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full pl-12"
+                        className="w-full pl-12 py-3"
                     />
                 </div>
 
                 {/* Filter Buttons */}
-                <div className="flex gap-3 overflow-x-auto pb-2">
+                <div className="flex gap-2 md:gap-3 overflow-x-auto pb-2 no-scrollbar">
                     {filterButtons.map(({ label, value, count }) => (
                         <motion.button
                             key={value}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             onClick={() => setFilter(value)}
-                            className={`px-6 py-3 rounded-xl font-medium whitespace-nowrap transition-all ${filter === value
+                            className={`px-4 md:px-6 py-2 md:py-3 rounded-xl font-medium whitespace-nowrap transition-all text-sm md:text-base ${filter === value
                                 ? 'bg-gradient-to-r from-primary to-accent text-white'
                                 : 'bg-white/5 hover:bg-white/10'
                                 }`}
@@ -301,11 +301,11 @@ export default function TasksPage() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="glass-card p-12 text-center"
+                            className="glass-card p-8 md:p-12 text-center"
                         >
-                            <SparklesIcon className="w-16 h-16 text-gray-500 mx-auto mb-4" />
-                            <h3 className="text-xl font-semibold mb-2">No tasks found</h3>
-                            <p className="text-gray-400 mb-6">
+                            <SparklesIcon className="w-12 h-12 md:w-16 md:h-16 text-gray-500 mx-auto mb-4" />
+                            <h3 className="text-lg md:text-xl font-semibold mb-2">No tasks found</h3>
+                            <p className="text-gray-400 mb-6 text-sm md:text-base">
                                 {filter === 'all' ? 'Create your first task to get started!' : `No ${filter} tasks yet`}
                             </p>
                             <motion.button
@@ -349,13 +349,14 @@ export default function TasksPage() {
                             className="fixed inset-0 z-50 flex items-center justify-center p-4"
                             onClick={(e) => e.stopPropagation()}
                         >
-                            <div className="glass-card p-8 w-full max-w-lg max-h-[90vh] overflow-y-auto">
-                                <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                                    <SparklesIcon className="w-7 h-7 text-accent" />
+                            <div className="glass-card p-6 md:p-8 w-full max-w-lg max-h-[90vh] overflow-y-auto">
+                                <h2 className="text-xl md:text-2xl font-bold mb-6 flex items-center gap-2">
+                                    <SparklesIcon className="w-6 h-6 md:w-7 md:h-7 text-accent" />
                                     {editingTaskId ? 'Edit Task' : 'Create New Task'}
                                 </h2>
 
                                 <form onSubmit={handleSaveTask} className="space-y-6">
+                                    {/* ... form fields remain same but with responsive padding if needed ... */}
                                     <div>
                                         <label className="block text-sm font-medium mb-2">
                                             Task Title *
@@ -393,7 +394,7 @@ export default function TasksPage() {
                                                     key={priority}
                                                     type="button"
                                                     onClick={() => setNewTask({ ...newTask, priority })}
-                                                    className={`py-3 rounded-xl font-medium capitalize transition-all ${newTask.priority === priority
+                                                    className={`py-2 md:py-3 rounded-xl font-medium capitalize transition-all text-sm md:text-base ${newTask.priority === priority
                                                         ? priority === 'high' ? 'bg-red-400/20 text-red-400 border-2 border-red-400' :
                                                             priority === 'medium' ? 'bg-yellow-400/20 text-yellow-400 border-2 border-yellow-400' :
                                                                 'bg-blue-400/20 text-blue-400 border-2 border-blue-400'
@@ -424,7 +425,7 @@ export default function TasksPage() {
                                             whileHover={{ scale: 1.02 }}
                                             whileTap={{ scale: 0.98 }}
                                             type="submit"
-                                            className="flex-1 btn-primary py-4"
+                                            className="flex-1 btn-primary py-3 md:py-4"
                                         >
                                             {editingTaskId ? 'Update Task' : 'Create Task'}
                                         </motion.button>
@@ -438,7 +439,7 @@ export default function TasksPage() {
                                                 setEditingTaskId(null);
                                                 setNewTask({ title: '', description: '', priority: 'medium', tags: '' });
                                             }}
-                                            className="flex-1 btn-secondary py-4"
+                                            className="flex-1 btn-secondary py-3 md:py-4"
                                         >
                                             Cancel
                                         </motion.button>
@@ -469,9 +470,9 @@ export default function TasksPage() {
                             className="fixed inset-0 z-50 flex items-center justify-center p-4"
                             onClick={(e) => e.stopPropagation()}
                         >
-                            <div className="glass-card p-8 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-                                <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                                    <SparklesIcon className="w-7 h-7 text-accent" />
+                            <div className="glass-card p-6 md:p-8 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+                                <h2 className="text-xl md:text-2xl font-bold mb-6 flex items-center gap-2">
+                                    <SparklesIcon className="w-6 h-6 md:w-7 md:h-7 text-accent" />
                                     AI Task Assistant
                                 </h2>
 
@@ -504,7 +505,7 @@ export default function TasksPage() {
                                         <motion.div
                                             initial={{ opacity: 0, y: 10 }}
                                             animate={{ opacity: 1, y: 0 }}
-                                            className="glass-card p-6 border border-accent/20"
+                                            className="glass-card p-4 md:p-6 border border-accent/20"
                                         >
                                             <h3 className="font-semibold text-accent mb-4 flex items-center gap-2">
                                                 <SparklesIcon className="w-5 h-5" />
@@ -520,15 +521,15 @@ export default function TasksPage() {
                                                         if (Array.isArray(content)) {
                                                             return content.map((item: any, i: number) => (
                                                                 <div key={i} className="bg-white/5 p-4 rounded-xl border border-white/10 hover:border-accent/50 transition-colors group">
-                                                                    <div className="flex justify-between items-start mb-2">
+                                                                    <div className="flex flex-col sm:flex-row justify-between items-start gap-2 mb-2">
                                                                         <h4 className="font-medium text-white">{item.task}</h4>
-                                                                        <span className={`text-xs px-2 py-1 rounded-full ${item.priority === 'high' ? 'bg-red-500/20 text-red-400' :
-                                                                                item.priority === 'medium' ? 'bg-yellow-500/20 text-yellow-400' :
-                                                                                    'bg-blue-500/20 text-blue-400'
+                                                                        <span className={`text-xs px-2 py-1 rounded-full whitespace-nowrap ${item.priority === 'high' ? 'bg-red-500/20 text-red-400' :
+                                                                            item.priority === 'medium' ? 'bg-yellow-500/20 text-yellow-400' :
+                                                                                'bg-blue-500/20 text-blue-400'
                                                                             }`}>{item.priority}</span>
                                                                     </div>
                                                                     <p className="text-sm text-gray-400 mb-3">{item.tips}</p>
-                                                                    <div className="flex items-center justify-between text-xs text-gray-500">
+                                                                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs text-gray-500 gap-2">
                                                                         <div className="flex gap-3">
                                                                             <span>⏱ {item.estimatedTime}</span>
                                                                             <span>📅 {item.deadline}</span>
@@ -544,7 +545,7 @@ export default function TasksPage() {
                                                                                 setShowAIModal(false);
                                                                                 setShowCreateModal(true);
                                                                             }}
-                                                                            className="text-accent hover:text-white transition-colors opacity-0 group-hover:opacity-100"
+                                                                            className="text-accent hover:text-white transition-colors opacity-100 sm:opacity-0 sm:group-hover:opacity-100"
                                                                         >
                                                                             Use this task →
                                                                         </button>
