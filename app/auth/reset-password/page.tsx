@@ -1,15 +1,13 @@
 'use client';
 
-import { useState, Suspense } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { LockClosedIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { toast } from 'react-hot-toast';
 import { useRouter, useSearchParams } from 'next/navigation';
 
-export const dynamic = 'force-dynamic';
-
-function ResetPasswordContent() {
+export default function ResetPasswordPage() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [loading, setLoading] = useState(false);
@@ -52,85 +50,6 @@ function ResetPasswordContent() {
         }
     };
 
-    if (!token) {
-        return (
-            <div className="text-center text-red-500">
-                Invalid or missing token.
-            </div>
-        );
-    }
-
-    return (
-        <div className="glass-card p-8 md:p-10 w-full max-w-md">
-            <div className="text-center mb-8">
-                <h1 className="text-3xl font-bold font-heading mb-2">
-                    Reset Password
-                </h1>
-                <p className="text-gray-400">
-                    Enter your new password below
-                </p>
-            </div>
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                    <label htmlFor="password" className="block text-sm font-medium mb-2">
-                        New Password
-                    </label>
-                    <div className="relative">
-                        <LockClosedIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                        <input
-                            id="password"
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            className="w-full bg-white/5 border border-white/10 rounded-lg py-3 pl-10 pr-4 focus:outline-none focus:border-primary transition-colors"
-                            placeholder="••••••••"
-                            required
-                            minLength={6}
-                        />
-                    </div>
-                </div>
-
-                <div>
-                    <label htmlFor="confirmPassword" className="block text-sm font-medium mb-2">
-                        Confirm Password
-                    </label>
-                    <div className="relative">
-                        <LockClosedIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                        <input
-                            id="confirmPassword"
-                            type="password"
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                            className="w-full bg-white/5 border border-white/10 rounded-lg py-3 pl-10 pr-4 focus:outline-none focus:border-primary transition-colors"
-                            placeholder="••••••••"
-                            required
-                            minLength={6}
-                        />
-                    </div>
-                </div>
-
-                <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    type="submit"
-                    disabled={loading}
-                    className="w-full btn-primary py-3 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                    {loading ? 'Resetting...' : 'Reset Password'}
-                </motion.button>
-            </form>
-
-            <div className="mt-6 text-center">
-                <Link href="/auth/login" className="text-sm text-gray-500 hover:text-gray-300 transition-colors">
-                    ← Back to login
-                </Link>
-            </div>
-        </div>
-    );
-}
-
-export default function ResetPasswordPage() {
     return (
         <div className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
             {/* Background effects */}
@@ -145,9 +64,81 @@ export default function ResetPasswordPage() {
                 transition={{ duration: 0.5 }}
                 className="w-full max-w-md relative z-10"
             >
-                <Suspense fallback={<div className="text-center">Loading...</div>}>
-                    <ResetPasswordContent />
-                </Suspense>
+                {!token ? (
+                    <div className="glass-card p-8 text-center">
+                        <div className="text-red-500 mb-4">Invalid or missing reset token</div>
+                        <Link href="/auth/forgot-password" className="text-primary hover:underline">
+                            Request a new password reset
+                        </Link>
+                    </div>
+                ) : (
+                    <div className="glass-card p-8 md:p-10 w-full max-w-md">
+                        <div className="text-center mb-8">
+                            <h1 className="text-3xl font-bold font-heading mb-2">
+                                Reset Password
+                            </h1>
+                            <p className="text-gray-400">
+                                Enter your new password below
+                            </p>
+                        </div>
+
+                        <form onSubmit={handleSubmit} className="space-y-6">
+                            <div>
+                                <label htmlFor="password" className="block text-sm font-medium mb-2">
+                                    New Password
+                                </label>
+                                <div className="relative">
+                                    <LockClosedIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                                    <input
+                                        id="password"
+                                        type="password"
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        className="w-full bg-white/5 border border-white/10 rounded-lg py-3 pl-10 pr-4 focus:outline-none focus:border-primary transition-colors"
+                                        placeholder="••••••••"
+                                        required
+                                        minLength={6}
+                                    />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label htmlFor="confirmPassword" className="block text-sm font-medium mb-2">
+                                    Confirm Password
+                                </label>
+                                <div className="relative">
+                                    <LockClosedIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                                    <input
+                                        id="confirmPassword"
+                                        type="password"
+                                        value={confirmPassword}
+                                        onChange={(e) => setConfirmPassword(e.target.value)}
+                                        className="w-full bg-white/5 border border-white/10 rounded-lg py-3 pl-10 pr-4 focus:outline-none focus:border-primary transition-colors"
+                                        placeholder="••••••••"
+                                        required
+                                        minLength={6}
+                                    />
+                                </div>
+                            </div>
+
+                            <motion.button
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
+                                type="submit"
+                                disabled={loading}
+                                className="w-full btn-primary py-3 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                                {loading ? 'Resetting...' : 'Reset Password'}
+                            </motion.button>
+                        </form>
+
+                        <div className="mt-6 text-center">
+                            <Link href="/auth/login" className="text-sm text-gray-500 hover:text-gray-300 transition-colors">
+                                ← Back to login
+                            </Link>
+                        </div>
+                    </div>
+                )}
             </motion.div>
         </div>
     );
