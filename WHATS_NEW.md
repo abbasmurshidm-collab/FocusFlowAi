@@ -11,7 +11,7 @@
 ## 🚀 Quick Start
 
 ```cmd
-cd c:\Users\abbas\Downloads\Web_App
+cd c:\Users\abbas\Downloads\Antigravity\FocusFlowAI_Public
 npm run dev
 ```
 
@@ -76,9 +76,9 @@ All feature pages now under `/dashboard`:
 ## 💡 Tips
 
 - **Sidebar is always visible** when you're logged in
-- **AI features require internet** (calls Groq API)
+- **AI features require internet** (calls Google Gemini API)
 - **AI responses take 2-4 seconds** (normal for LLMs)
-- **Groq API is FREE** but has rate limits
+- **Google Gemini API is FREE** with generous quota
 
 ---
 
@@ -90,9 +90,9 @@ All feature pages now under `/dashboard`:
    npm run dev
    ```
 
-2. **Check Groq API key** in `.env.local`:
+2. **Check Google Gemini API key** in `.env.local`:
    ```env
-   GROQ_API_KEY=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
+   GEMINI_API_KEY=AIzaSyD-iDT6sGobEGYSC29JI9UE2uSytg4ZvCg
    ```
 
 3. **Check browser console** for errors (F12)

@@ -39,3 +39,43 @@ export const sendVerificationEmail = async (email: string, code: string) => {
         console.error('Error sending email:', error.message);
     }
 };
+
+export const sendPasswordResetEmail = async (email: string, resetUrl: string) => {
+    if (!RESEND_API_KEY) {
+        console.error('RESEND_API_KEY is not defined');
+        throw new Error('Email service not configured');
+    }
+
+    try {
+        const { data, error } = await resend.emails.send({
+            from: 'FocusFlow AI <noreply@focusflownor.work.gd>',
+            to: email,
+            subject: 'Reset your password',
+            html: `
+                <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
+                    <h2>Reset your Password</h2>
+                    <p>You requested a password reset. Click the button below to reset your password:</p>
+                    <div style="margin: 20px 0; text-align: center;">
+                        <a href="${resetUrl}" style="background: #6C5CE7; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block;">Reset Password</a>
+                    </div>
+                    <p>Or copy and paste this link into your browser:</p>
+                    <p style="word-break: break-all; color: #666;">${resetUrl}</p>
+                    <p>This link will expire in 1 hour.</p>
+                    <p>If you didn't request this, please ignore this email.</p>
+                </div>
+            `,
+        });
+
+        if (error) {
+            console.error('Error sending password reset email:', error);
+            throw new Error('Failed to send password reset email');
+        }
+
+        console.log('Password reset email sent:', data?.id);
+        return data;
+
+    } catch (error: any) {
+        console.error('Error sending password reset email:', error.message);
+        throw error;
+    }
+};

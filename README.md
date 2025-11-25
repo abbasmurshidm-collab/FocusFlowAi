@@ -1,6 +1,6 @@
 # 🚀 FocusFlow AI - AI-Powered Productivity Platform
 
-A comprehensive productivity web application powered by AI (Groq API with LLaMA 3.1) to help you manage tasks, track focus sessions, set goals, and boost your productivity.
+A comprehensive productivity web application powered by AI (Google Gemini API with gemini-1.5-flash) to help you manage tasks, track focus sessions, set goals, and boost your productivity.
 
 ![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)
 ![React](https://img.shields.io/badge/React-18-blue?style=flat-square&logo=react)
@@ -52,17 +52,16 @@ A comprehensive productivity web application powered by AI (Groq API with LLaMA 
 - **bcrypt** - Password hashing
 
 ### AI Integration
-- **Groq API** - Fast AI inference
-- **LLaMA 3.1 70B** - Task planning & scheduling
-- **Mixtral 8x7B** - Alternative model
-- **Gemma 2 9B** - Lightweight option
+- **Google Gemini API** - Fast AI inference
+- **gemini-1.5-flash** - Optimized for speed and quality
+- **gemini-1.5-pro** - Advanced model for complex tasks
 
 ## 🛠️ Installation & Setup
 
 ### Prerequisites
 - Node.js 18+ installed
 - MongoDB Atlas account (free tier)
-- Groq API key ([Get one here](https://console.groq.com))
+- Google Gemini API key ([Get one here](https://aistudio.google.com/app/apikey))
 
 ### Step 1: Clone & Install
 ```bash
@@ -83,8 +82,8 @@ JWT_SECRET=your_super_secret_jwt_key_change_this_to_something_random
 # JWT Expiration
 JWT_EXPIRES_IN=7d
 
-# Groq API Key (get from https://console.groq.com)
-GROQ_API_KEY=gsk_your_groq_api_key_here
+# Google Gemini API Key (get from https://aistudio.google.com/app/apikey)
+GEMINI_API_KEY=your_gemini_api_key_here
 
 # App URL
 NEXT_PUBLIC_APP_URL=http://localhost:3000
@@ -120,13 +119,13 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
    - Replace `<password>` with your database user password
    - Replace `<dbname>` with `focusflow`
 
-### Step 4: Get Groq API Key
+### Step 4: Get Google Gemini API Key
 
-1. Go to [Groq Console](https://console.groq.com)
-2. Sign up / Login
-3. Navigate to API Keys
-4. Create new API key
-5. Copy and paste into `.env.local`
+1. Go to [Google AI Studio](https://aistudio.google.com/app/apikey)
+2. Sign in with your Google account
+3. Click "Create API Key"
+4. Copy the API key
+5. Paste into `.env.local`
 
 ### Step 5: Run Development Server
 
@@ -182,7 +181,7 @@ FocusFlow-AI/
 │   │   ├── notes/       # Notes management
 │   │   ├── goals/       # Goal tracking
 │   │   ├── focus/       # Focus sessions
-│   │   └── ai/          # AI endpoints (Groq)
+│   │   └── ai/          # AI endpoints (Gemini)
 │   ├── auth/            # Auth pages (login/register)
 │   ├── dashboard/       # Main dashboard
 │   ├── tasks/           # Tasks page
@@ -201,7 +200,7 @@ FocusFlow-AI/
 ├── lib/                 # Utilities
 │   ├── db.ts           # MongoDB connection
 │   ├── auth.ts         # Auth utilities
-│   ├── groq.ts         # Groq AI functions
+│   ├── groq.ts         # Gemini AI functions (legacy filename)
 │   └── middleware.ts   # API middleware
 ├── models/              # Mongoose models
 │   ├── User.ts
@@ -253,7 +252,7 @@ FocusFlow-AI/
 
 ## 🤖 AI Capabilities
 
-The app uses Groq AI (LLaMA 3.1) for:
+The app uses Google Gemini AI (gemini-1.5-flash) for:
 
 1. **Task Planning** - Converts task lists into structured plans with priorities
 2. **Smart Scheduling** - Generates optimized daily schedules
@@ -334,9 +333,9 @@ The app uses Groq AI (LLaMA 3.1) for:
 - Ensure IP whitelist includes 0.0.0.0/0
 - Check network connectivity
 
-### Groq API Errors
+### Google Gemini API Errors
 - Verify API key is correct
-- Check Groq API status
+- Check API quota at [Google AI Studio](https://aistudio.google.com)
 - Monitor rate limits
 - Review error messages
 
@@ -362,7 +361,7 @@ For issues or questions:
 
 ## 🌟 Acknowledgments
 
-- **Groq** for blazing-fast AI inference
+- **Google Gemini** for blazing-fast AI inference
 - **Vercel** for seamless deployment
 - **MongoDB** for reliable database
 - **Next.js** team for amazing framework
@@ -370,6 +369,6 @@ For issues or questions:
 
 ---
 
-**Built with ❤️ using Next.js, MongoDB, and Groq AI**
+**Built with ❤️ using Next.js, MongoDB, and Google Gemini AI**
 
 🚀 **Start your productivity journey today!**

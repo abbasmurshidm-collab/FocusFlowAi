@@ -7,7 +7,7 @@ echo.
 echo JWT_SECRET=84f983305db3b1a8e64975142248ce14
 echo JWT_EXPIRES_IN=7d
 echo.
-echo GROQ_API_KEY=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
+echo GEMINI_API_KEY=AIzaSyD-iDT6sGobEGYSC29JI9UE2uSytg4ZvCg
 echo.
 echo NEXT_PUBLIC_APP_URL=http://localhost:3000
 ) > .env.local
@@ -16,7 +16,7 @@ echo .env.local file created successfully!
 echo.
 echo Your credentials have been configured:
 echo - MongoDB: Connected to cluster0.faiop3n.mongodb.net
-echo - Groq API: Ready
+echo - Google Gemini API: Ready
 echo - JWT: Configured
 echo.
 echo Next steps:

@@ -5,7 +5,7 @@
 Your `.env.local` file has been created with:
 
 - ✅ **MongoDB URI**: Connected to `cluster0.faiop3n.mongodb.net`
-- ✅ **Groq API Key**: Configured and ready
+- ✅ **Google Gemini API Key**: Configured and ready
 - ✅ **JWT Secret**: Set for authentication
 - ✅ **App URL**: http://localhost:3000
 
@@ -22,7 +22,7 @@ Your `.env.local` file has been created with:
 
 2. **Navigate to project**:
    ```cmd
-   cd c:\Users\abbas\Downloads\Web_App
+   cd c:\Users\abbas\Downloads\Antigravity\FocusFlowAI_Public
    ```
 
 3. **Install dependencies**:
@@ -52,7 +52,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 Then you can use PowerShell normally:
 ```powershell
-cd c:\Users\abbas\Downloads\Web_App
+cd c:\Users\abbas\Downloads\Antigravity\FocusFlowAI_Public
 npm install
 npm run dev
 ```
@@ -66,7 +66,7 @@ It will install all these dependencies:
 - Tailwind CSS & Framer Motion
 - MongoDB & Mongoose
 - JWT & bcrypt
-- Groq AI SDK
+- Google Gemini AI SDK
 - React Hot Toast & Heroicons
 - TypeScript & all type definitions
 
@@ -122,9 +122,9 @@ npm run dev
 → Your MongoDB URI is already configured correctly
 → Make sure you have internet connection
 
-### If Groq API errors:
+### If Google Gemini API errors:
 → Your API key is already configured
-→ Check https://status.groq.com if issues persist
+→ Check https://aistudio.google.com if issues persist
 
 ---
 
@@ -174,7 +174,7 @@ After testing locally, deploy to Vercel:
    - Add environment variables:
      - MONGODB_URI
      - JWT_SECRET
-     - GROQ_API_KEY
+     - GEMINI_API_KEY
      - NEXT_PUBLIC_APP_URL
    - Deploy!
 

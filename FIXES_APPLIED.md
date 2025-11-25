@@ -38,7 +38,7 @@
   - Formatted text display
   - Scrollable content area
   - Smooth fade-in animation
-- Groq AI extracts:
+- Google Gemini AI extracts:
   - Main summary points
   - Key insights
   - Action items
@@ -141,7 +141,7 @@ app/
 ## ✨ Features Now Working
 
 ✅ **Sidebar Navigation** - All pages  
-✅ **AI Task Planning** - With Groq API  
+✅ **AI Task Planning** - With Google Gemini API  
 ✅ **AI Note Summarization** - With visual display  
 ✅ **Task Management** - Full CRUD  
 ✅ **Notes Management** - Full CRUD  
@@ -180,7 +180,7 @@ app/
 
 ## 🐛 Known Limitations
 
-- Groq API has rate limits (but generous for free tier)
+- Google Gemini API has generous free quota
 - AI responses take 2-4 seconds (normal for LLMs)
 - Summary quality depends on note content length
 

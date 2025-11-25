@@ -8,7 +8,7 @@ Your credentials have been configured in `.env.local`:
 
 ```
 ✓ MongoDB Atlas: cluster0.faiop3n.mongodb.net
-✓ Groq API: Configured with your key  
+✓ Google Gemini API: Configured with your key  
 ✓ JWT Secret: Set for authentication
 ✓ App URL: http://localhost:3000
 ```
@@ -26,7 +26,7 @@ Your credentials have been configured in `.env.local`:
 
 2. Navigate to project:
    ```cmd
-   cd c:\Users\abbas\Downloads\Web_App
+   cd c:\Users\abbas\Downloads\Antigravity\FocusFlowAI_Public
    ```
 
 3. Run the installer:
@@ -47,7 +47,7 @@ That's it! The script will:
 **Using Command Prompt:**
 
 ```cmd
-cd c:\Users\abbas\Downloads\Web_App
+cd c:\Users\abbas\Downloads\Antigravity\FocusFlowAI_Public
 npm install
 npm run dev
 ```
@@ -78,7 +78,7 @@ The `npm install` command will download and install:
 - ✓ bcrypt 5.1.1
 
 **AI Integration:**
-- ✓ groq-sdk 0.3.0
+- ✓ @google/generative-ai
 
 **UI Components:**
 - ✓ @heroicons/react 2.1.0
@@ -224,7 +224,7 @@ Once you've tested locally, deploy to Vercel:
      ```
      MONGODB_URI=mongodb+srv://lokeshnix_db_user:yF167KGc5orr96wG@cluster0.faiop3n.mongodb.net/focusflow?retryWrites=true&w=majority&appName=Cluster0
      JWT_SECRET=84f983305db3b1a8e64975142248ce14
-     GROQ_API_KEY=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
+     GEMINI_API_KEY=AIzaSyD-iDT6sGobEGYSC29JI9UE2uSytg4ZvCg
      NEXT_PUBLIC_APP_URL=https://your-app.vercel.app
      ```
    - Click "Deploy"

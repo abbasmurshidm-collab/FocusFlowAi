@@ -11,7 +11,7 @@ You have several options:
 
 ### Option 1: Use Command Prompt (CMD) Instead
 1. Open Command Prompt (not PowerShell)
-2. Navigate to the project: `cd c:\Users\abbas\Downloads\Web_App`
+2. Navigate to the project: `cd c:\Users\abbas\Downloads\Antigravity\FocusFlowAI_Public`
 3. Run: `npm install`
 4. Then: `npm run dev`
 
@@ -46,7 +46,7 @@ npm install framer-motion@^11.0.0
 npm install mongoose@^8.0.0
 npm install bcrypt@^5.1.1
 npm install jsonwebtoken@^9.0.2
-npm install groq-sdk@^0.3.0
+npm install @google/generative-ai
 npm install axios@^1.6.0
 npm install react-hot-toast@^2.4.1
 npm install react-icons@^5.0.0
@@ -82,8 +82,8 @@ MONGODB_URI=mongodb+srv://USERNAME:PASSWORD@cluster0.xxxxx.mongodb.net/focusflow
 JWT_SECRET=your_secret_key_here_make_it_very_long_and_random
 JWT_EXPIRES_IN=7d
 
-# Groq API Key
-GROQ_API_KEY=gsk_your_groq_api_key_here
+# Google Gemini API Key
+GEMINI_API_KEY=your_gemini_api_key_here
 
 # Application URL
 NEXT_PUBLIC_APP_URL=http://localhost:3000
@@ -122,20 +122,19 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
    - Replace `<password>` with your database user password
    - Replace `test` with `focusflow`
 
-### 3. Groq API Setup (Free Tier)
+### 3. Google Gemini API Setup (Free Tier)
 
 1. **Get API Key**
-   - Visit: https://console.groq.com
-   - Sign up / Login (free)
-   - Go to "API Keys" section
+   - Visit: https://aistudio.google.com/app/apikey
+   - Sign in with Google account (free)
    - Click "Create API Key"
-   - Copy the key (starts with `gsk_`)
+   - Copy the key (starts with `AIza`)
    - Paste into `.env.local`
 
 2. **Available Models**
-   - `llama-3.1-70b-versatile` (default, best quality)
-   - `mixtral-8x7b-32768` (alternative)
-   - `gemma-2-9b-it` (faster, lightweight)
+   - `gemini-1.5-flash` (default, fast and efficient)
+   - `gemini-1.5-pro` (advanced, for complex tasks)
+   - `gemini-pro` (general purpose)
 
 ---
 
@@ -220,7 +219,7 @@ Follow prompts and add environment variables.
      - `MONGODB_URI`
      - `JWT_SECRET`
      - `JWT_EXPIRES_IN` (e.g., `7d`)
-     - `GEMINI_API_KEY` (or `GROQ_API_KEY` if you are using Groq, check your `.env.local`)
+     - `GEMINI_API_KEY` (Required for AI features)
      - `NEXT_PUBLIC_APP_URL` (Set this to your Render URL, e.g., `https://focusflow-ai.onrender.com`)
      - `RESEND_API_KEY` (Required for emails)
    - Click "Save Changes"
@@ -234,7 +233,7 @@ After installation, verify:
 ✅ All dependencies installed (`node_modules` folder exists)  
 ✅ `.env.local` file created with all variables  
 ✅ MongoDB connection string is correct  
-✅ Groq API key is valid  
+✅ Google Gemini API key is valid  
 ✅ No TypeScript errors  
 ✅ Development server runs without errors  
 
@@ -257,10 +256,10 @@ npm install
 - Ensure IP whitelist is set to 0.0.0.0/0
 - Check username/password in connection string
 
-### Issue: Groq API errors
+### Issue: Google Gemini API errors
 **Solutions:**
-- Verify API key is correct (starts with `gsk_`)
-- Check Groq API status: https://status.groq.com
+- Verify API key is correct (starts with `AIza`)
+- Check API quota at https://aistudio.google.com
 - Ensure you're not exceeding free tier limits
 - Try a different model
 
@@ -285,7 +284,7 @@ npm install --save-dev @types/node @types/react @types/react-dom
 1. ✅ Enable PowerShell or use CMD
 2. ✅ Install all dependencies
 3. ✅ Create MongoDB Atlas account
-4. ✅ Get Groq API key
+4. ✅ Get Google Gemini API key
 5. ✅ Create `.env.local` file
 6. ✅ Run `npm run dev`
 7. ✅ Open http://localhost:3000
@@ -297,7 +296,7 @@ npm install --save-dev @types/node @types/react @types/react-dom
 ## 🎯 Quick Start (TL;DR)
 
 ```cmd
-cd c:\Users\abbas\Downloads\Web_App
+cd c:\Users\abbas\Downloads\Antigravity\FocusFlowAI_Public
 npm install
 # Create .env.local with your credentials
 npm run dev
@@ -313,7 +312,7 @@ If you encounter issues:
 2. Review the main README.md
 3. Check console for specific errors
 4. Verify environment variables
-5. Check MongoDB and Groq dashboards
+5. Check MongoDB and Gemini dashboards
 
 ---
 

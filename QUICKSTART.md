@@ -10,7 +10,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 ### Step 2: Install Dependencies
 ```cmd
-cd c:\Users\abbas\Downloads\Web_App
+cd c:\Users\abbas\Downloads\Antigravity\FocusFlowAI_Public
 npm install
 ```
 
@@ -21,18 +21,18 @@ npm install
 4. Network Access → Add IP → Allow 0.0.0.0/0
 5. Connect → Get connection string
 
-### Step 4: Get Groq API Key (1 minute)
-1. Visit https://console.groq.com
-2. Sign up (free)
-3. API Keys → Create new key
-4. Copy key (starts with `gsk_`)
+### Step 4: Get Google Gemini API Key (1 minute)
+1. Visit https://aistudio.google.com/app/apikey
+2. Sign in with Google account (free)
+3. Click "Create API Key"
+4. Copy key
 
 ### Step 5: Create .env.local
 Copy `.env.local.example` to `.env.local` and fill in:
 ```env
 MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/focusflow
 JWT_SECRET=make_this_a_long_random_string_32_chars_minimum
-GROQ_API_KEY=gsk_your_key_here
+GEMINI_API_KEY=your_gemini_key_here
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
 
@@ -56,7 +56,7 @@ FocusFlow-AI/
 │   │   ├── notes/             # Notes CRUD
 │   │   ├── goals/             # Goal tracking
 │   │   ├── focus/             # Focus sessions
-│   │   └── ai/                # AI features (Groq)
+│   │   └── ai/                # AI features (Gemini)
 │   ├── auth/                  # Auth pages
 │   ├── dashboard/             # Main dashboard
 │   ├── tasks/                 # Tasks page
@@ -129,8 +129,8 @@ FocusFlow-AI/
 - bcrypt
 
 **AI:**
-- Groq API
-- LLaMA 3.1 70B
+- Google Gemini API
+- gemini-1.5-flash
 
 ---
 
@@ -177,8 +177,8 @@ Don't forget to add environment variables in Vercel!
 **MongoDB connection error?**
 → Check connection string, password, and IP whitelist
 
-**Groq API error?**
-→ Verify API key and check https://status.groq.com
+**Google Gemini API error?**
+→ Verify API key and check https://aistudio.google.com
 
 **Port 3000 in use?**
 → `npx kill-port 3000` or use different port
@@ -200,7 +200,7 @@ After setup, check:
 - [ ] `npm install` completed without errors
 - [ ] `.env.local` file exists with all variables
 - [ ] MongoDB connection works
-- [ ] Groq API key is valid
+- [ ] Google Gemini API key is valid
 - [ ] `npm run dev` starts without errors
 - [ ] Can access http://localhost:3000
 - [ ] Can register new account
@@ -225,7 +225,7 @@ After setup, check:
 - Use **Command Prompt** for npm commands on Windows
 - Keep `.env.local` file secret (never commit it)
 - MongoDB free tier gives 0.5GB storage
-- Groq free tier has rate limits
+- Gemini free tier has generous quota
 - Deploy to Vercel for free hosting
 
 ---
@@ -235,7 +235,7 @@ After setup, check:
 1. Check error messages in console
 2. Review DEPLOYMENT.md
 3. Verify environment variables
-4. Check MongoDB/Groq dashboards
+4. Check MongoDB/Gemini dashboards
 5. Review API_DOCUMENTATION.md
 
 ---
@@ -250,7 +250,7 @@ After setup, check:
 
 **Requirements:**
 - MongoDB Atlas (already setup)
-- Groq API key (already have)
+- Google Gemini API key (already have)
 - Environment variables configured
 
 ---
@@ -264,7 +264,7 @@ After setup, check:
 ```env
 MONGODB_URI=mongodb+srv://...
 JWT_SECRET=long_random_string
-GROQ_API_KEY=gsk_...
+GEMINI_API_KEY=your_key...
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
 
