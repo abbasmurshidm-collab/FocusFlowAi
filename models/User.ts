@@ -19,6 +19,9 @@ export interface IUser extends Document {
     resetPasswordExpires?: Date;
     createdAt: Date;
     updatedAt: Date;
+    xp: number;
+    level: number;
+    badges: string[];
 }
 
 const UserSchema = new Schema<IUser>(
@@ -86,6 +89,18 @@ const UserSchema = new Schema<IUser>(
         resetPasswordExpires: {
             type: Date,
             select: false,
+        },
+        xp: {
+            type: Number,
+            default: 0,
+        },
+        level: {
+            type: Number,
+            default: 1,
+        },
+        badges: {
+            type: [String],
+            default: [],
         },
     },
     {

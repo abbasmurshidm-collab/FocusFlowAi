@@ -29,6 +29,7 @@ export default function Sidebar() {
         { name: 'Tasks', href: '/dashboard/tasks', icon: ListBulletIcon },
         { name: 'Focus Timer', href: '/dashboard/focus', icon: ClockIcon },
         { name: 'Notes', href: '/dashboard/notes', icon: DocumentTextIcon },
+        { name: 'Habits', href: '/dashboard/habits', icon: FireIcon },
         { name: 'Goals', href: '/dashboard/goals', icon: FireIcon },
         { name: 'Analytics', href: '/dashboard/analytics', icon: ChartBarIcon },
         { name: 'Settings', href: '/dashboard/settings', icon: Cog6ToothIcon },
@@ -80,8 +81,8 @@ export default function Sidebar() {
                                 whileHover={{ scale: 1.02, x: 4 }}
                                 whileTap={{ scale: 0.98 }}
                                 className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all min-h-[44px] ${isActive
-                                        ? 'bg-gradient-to-r from-primary to-accent text-white'
-                                        : 'hover:bg-white/5'
+                                    ? 'bg-gradient-to-r from-primary to-accent text-white'
+                                    : 'hover:bg-white/5'
                                     }`}
                             >
                                 <Icon className="w-5 h-5 flex-shrink-0" />
