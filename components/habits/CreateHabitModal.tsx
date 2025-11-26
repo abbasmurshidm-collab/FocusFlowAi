@@ -55,113 +55,115 @@ export default function CreateHabitModal({ isOpen, onClose, onCreate }: CreateHa
                         initial={{ opacity: 0, scale: 0.95, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                        className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg z-50 max-h-[90vh] overflow-y-auto"
+                        className="fixed inset-0 z-50 flex items-center justify-center p-4"
                     >
-                        <div className="glass-card p-6 md:p-8 m-4">
-                            <div className="flex items-center justify-between mb-6">
-                                <h2 className="text-xl md:text-2xl font-bold">Create New Habit</h2>
-                                <button
-                                    onClick={onClose}
-                                    className="p-2 hover:bg-white/10 rounded-lg transition-colors"
-                                >
-                                    <XMarkIcon className="w-6 h-6" />
-                                </button>
-                            </div>
-
-                            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-400 mb-2">
-                                        Habit Title
-                                    </label>
-                                    <input
-                                        type="text"
-                                        required
-                                        value={formData.title}
-                                        onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                                        placeholder="e.g., Morning Meditation"
-                                        className="w-full"
-                                    />
-                                </div>
-
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-400 mb-2">
-                                        Description (Optional)
-                                    </label>
-                                    <textarea
-                                        value={formData.description}
-                                        onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                                        placeholder="Why do you want to build this habit?"
-                                        rows={3}
-                                        className="w-full resize-none"
-                                    />
-                                </div>
-
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-400 mb-2">
-                                            Frequency
-                                        </label>
-                                        <select
-                                            value={formData.frequency}
-                                            onChange={(e) => setFormData({ ...formData, frequency: e.target.value })}
-                                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary"
-                                        >
-                                            <option value="daily">Daily</option>
-                                            <option value="weekly">Weekly</option>
-                                        </select>
-                                    </div>
-
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-400 mb-2">
-                                            Category
-                                        </label>
-                                        <select
-                                            value={formData.category}
-                                            onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary"
-                                        >
-                                            <option value="Health">Health</option>
-                                            <option value="Productivity">Productivity</option>
-                                            <option value="Learning">Learning</option>
-                                            <option value="Mindfulness">Mindfulness</option>
-                                            <option value="Other">Other</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-400 mb-2">
-                                        Reminder Time (Optional)
-                                    </label>
-                                    <input
-                                        type="time"
-                                        value={formData.reminderTime}
-                                        onChange={(e) => setFormData({ ...formData, reminderTime: e.target.value })}
-                                        className="w-full"
-                                    />
-                                </div>
-
-                                <div className="flex flex-col sm:flex-row justify-end gap-3 pt-4">
+                        <div className="w-full max-w-lg max-h-[90vh] overflow-y-auto">
+                            <div className="glass-card p-6 md:p-8">
+                                <div className="flex items-center justify-between mb-6">
+                                    <h2 className="text-xl md:text-2xl font-bold">Create New Habit</h2>
                                     <button
-                                        type="button"
                                         onClick={onClose}
-                                        className="btn-secondary w-full sm:w-auto"
+                                        className="p-2 hover:bg-white/10 rounded-lg transition-colors"
                                     >
-                                        Cancel
-                                    </button>
-                                    <button
-                                        type="submit"
-                                        disabled={loading}
-                                        className="btn-primary flex items-center justify-center gap-2 w-full sm:w-auto"
-                                    >
-                                        {loading ? (
-                                            <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                                        ) : (
-                                            'Create Habit'
-                                        )}
+                                        <XMarkIcon className="w-6 h-6" />
                                     </button>
                                 </div>
-                            </form>
+
+                                <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+                                    <div>
+                                        <label className="block text-sm font-medium text-gray-400 mb-2">
+                                            Habit Title
+                                        </label>
+                                        <input
+                                            type="text"
+                                            required
+                                            value={formData.title}
+                                            onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                                            placeholder="e.g., Morning Meditation"
+                                            className="w-full"
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <label className="block text-sm font-medium text-gray-400 mb-2">
+                                            Description (Optional)
+                                        </label>
+                                        <textarea
+                                            value={formData.description}
+                                            onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                                            placeholder="Why do you want to build this habit?"
+                                            rows={3}
+                                            className="w-full resize-none"
+                                        />
+                                    </div>
+
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-400 mb-2">
+                                                Frequency
+                                            </label>
+                                            <select
+                                                value={formData.frequency}
+                                                onChange={(e) => setFormData({ ...formData, frequency: e.target.value })}
+                                                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary"
+                                            >
+                                                <option value="daily">Daily</option>
+                                                <option value="weekly">Weekly</option>
+                                            </select>
+                                        </div>
+
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-400 mb-2">
+                                                Category
+                                            </label>
+                                            <select
+                                                value={formData.category}
+                                                onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                                                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary"
+                                            >
+                                                <option value="Health">Health</option>
+                                                <option value="Productivity">Productivity</option>
+                                                <option value="Learning">Learning</option>
+                                                <option value="Mindfulness">Mindfulness</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label className="block text-sm font-medium text-gray-400 mb-2">
+                                            Reminder Time (Optional)
+                                        </label>
+                                        <input
+                                            type="time"
+                                            value={formData.reminderTime}
+                                            onChange={(e) => setFormData({ ...formData, reminderTime: e.target.value })}
+                                            className="w-full"
+                                        />
+                                    </div>
+
+                                    <div className="flex flex-col sm:flex-row justify-end gap-3 pt-4">
+                                        <button
+                                            type="button"
+                                            onClick={onClose}
+                                            className="btn-secondary w-full sm:w-auto"
+                                        >
+                                            Cancel
+                                        </button>
+                                        <button
+                                            type="submit"
+                                            disabled={loading}
+                                            className="btn-primary flex items-center justify-center gap-2 w-full sm:w-auto"
+                                        >
+                                            {loading ? (
+                                                <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                                            ) : (
+                                                'Create Habit'
+                                            )}
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </motion.div>
                 </>
