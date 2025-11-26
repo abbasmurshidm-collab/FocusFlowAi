@@ -27,7 +27,7 @@ export default function HabitCard({ habit, onComplete, onDelete }: HabitCardProp
     const handleComplete = async () => {
         if (isCompletedToday) return;
         setIsCompleting(true);
-        await onComplete(habit._id as string);
+        await onComplete(String(habit._id));
         setIsCompleting(false);
     };
 
